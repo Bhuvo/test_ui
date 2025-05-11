@@ -10,6 +10,7 @@ class PyChart extends StatelessWidget {
   final ChartData data;
   const PyChart({super.key, required this.data, });
 
+
   @override
   Widget build(BuildContext context) {
     return Container(

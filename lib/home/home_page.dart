@@ -2,9 +2,14 @@ import 'package:demo/home/widget/py_chart.dart';
 import 'package:demo/home/widget/status_chart.dart';
 import 'package:demo/home/widget/table_view.dart';
 import 'package:demo/widget/main_card.dart';
+import 'package:demo/widget/space.dart';
 import 'package:flutter/material.dart';
 
 import '../model/percent_model.dart';
+import '../widget/dotted_rect.dart';
+import '../widget/m_date_picker.dart';
+import '../widget/m_drop_down.dart';
+import '../widget/m_text_field.dart';
 
 Map<String ,dynamic> data =
 {
@@ -45,8 +50,8 @@ final chartDataType = ChartData.fromJson(data);
 final chartDataMode = ChartData.fromJson(dataMode);
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+   HomePage({super.key});
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     bool isTablet = MediaQuery.of(context).size.width > 600;
@@ -56,6 +61,26 @@ class HomePage extends StatelessWidget {
     final programMode = MainCard(title: 'Program Mode Metrics',child: PyChart(data: chartDataMode,),);
     return SingleChildScrollView(
       child: Column(children: [
+        DottedRect(
+          width: 300,
+          color: Colors.red,// Optional
+          height: 150,
+          onTap: (){},// Optional
+          child: Text('Centered content'),
+        ),
+        MDateTimePicker(),
+        MDropdownField<String>(
+          title: 'Program Type',
+          isRequired: true,
+          hintText: 'Choose program type',
+          items: ['Live', 'Recorded', 'Hybrid']
+              .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+              .toList(),
+          value: selectedValue,
+          onChanged: (val) {
+          },
+        ),
+        MTextField(),
         isTablet? Row(
           children: [
             Expanded(child: planedProgram),

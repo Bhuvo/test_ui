@@ -1,10 +1,72 @@
 import 'package:demo/home/home_page.dart';
 import 'package:flutter/material.dart';
 
+import 'example.dart';
 import 'nav_bar/nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
+}
+
+
+get(){
+  List<int> l =[];
+
+}
+
+
+
+
+
+
+
+int getValue( List<int> l){
+  // List<int> l =[1, 5, 3, 9, 2];
+  int i = 0;
+  int r =0;
+  while(i< l.length){
+    if(r<l[i]){
+      r=l[i];
+    }
+  }
+  return r ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+getData() {
+  String s = '({[]})';
+
+  Map<String ,String> pair = {
+    ')':'(',
+    '}': '{',
+    ']': '['
+  };
+  List<String> stack =[];
+  List<String> ls =s.split('');
+  int i=0;
+  while(i<ls.length){
+    if(pair.containsValue('${ls[i]}')){
+      stack.add('${ls[i]}');
+    }else if (pair.containsKey(ls[i])){
+      if(stack.isNotEmpty && stack.last == pair[ls[i]]){
+        stack.removeLast();
+      }
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {

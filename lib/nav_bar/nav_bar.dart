@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/info_widget.dart';
+import '../widget/m_text_field.dart';
 import 'drawer_widget.dart';
 
 class NavBar extends StatefulWidget {
@@ -78,7 +79,13 @@ class _NavBarState extends State<NavBar> {
       case 0:
         return HomePage();
       case 1:
-        return  InfoWidget(title: 'Coming soon',icon: Icons.calendar_month,);
+        return  Scaffold(
+          body: Column(
+            children: [
+              MTextField(),
+            ],
+          ),
+        );
       case 2:
         return InfoWidget(title: 'Coming soon',icon: Icons.calendar_month,);
       case 3:
